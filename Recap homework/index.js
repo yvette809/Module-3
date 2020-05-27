@@ -1,4 +1,4 @@
-//1)Write a JavaScript program to compute the sum of the two given integers. If the two values are same, then returns triple their sum.
+/*//1)Write a JavaScript program to compute the sum of the two given integers. If the two values are same, then returns triple their sum.
 const sumOfIntergers = (int1, int2)=> {
      
     if(int1 === int2){
@@ -177,7 +177,7 @@ function findLongestWord(array) {
     Right angle: An 90 degree angle.
     btuse angle: An angle between 90 and 180 degrees.
     Straight angle: A 180 degree angle.*/
-
+/*
     function angle_Type(angle) {
         if(angle < 90) {
           return "Acute angle.";
@@ -296,7 +296,7 @@ function changeCase(str){
       console.log(sumOfInt(30,60))
       console.log(sumOfInt(30,20))
       console.log(sumOfInt(50,20)
-      
+      */
       /*19)
 
 Convert a number to a string, the contents of which depend on the number's factors.
@@ -312,19 +312,25 @@ In raindrop-speak, this would be a simple "Plong".
 In raindrop-speak, this would be a "PlingPlang".
 34 has four factors: 1, 2, 17, and 34.
 In raindrop-speak, this would be "34".*/
-      function convertNumberToString(num){
+     function convertNumberToString(num){
         let result = ""
         if(num % 3 === 0){
-             return result +='pling'
-        }else if(num % 5=== 0){
-             return result+='plang'
-        }else if(num % 7 === 0){
-            return result +='plong'
-        }else if (num% 3 !=0 && num%5 != 0 && num% 7 != 0){
+              result +='pling'
+        }
+        if(num % 5=== 0){
+              result+='plang'
+        }
+        console.log('RESULT ', result)
+        if(num % 7 === 0){
+             result +='plong'
+        }
+      
+        if (num% 3 !=0 && num%5 != 0 && num% 7 != 0){
              num.ToString()
         }else {
-            return result
+             result
         }
+        return result
         }
     
             
@@ -332,12 +338,6 @@ In raindrop-speak, this would be "34".*/
 
 
 //20 Convert a phrase to its acronym, like Portable Network Graphics to its acronym (PNG).
-function convertPhrase (){
+function convertPhrase(){
     
 }
-
-
-
-  
-
-
