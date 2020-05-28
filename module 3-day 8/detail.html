@@ -36,61 +36,65 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/" >Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/" >Details <span class="sr-only">(current)</span></a>
             
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./backoffice.html">Backoffice</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./detail.html">Details</a>
+            <a class="nav-link" href="./index.html">Home</a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class=" text-center">
-      <h1>AMAZON PRODUCTS</h1>
-      <h2 class="mt-5">
-        Current products
-      </h2>
-      <div class="container outcome">
-       <div class="row"></div>
-        
-    </div>
+    <div class="container text-center">
+        <h1>PRODUCT DISPLAY</h1>
+        <h2>product details</h2>
+        <div class="my-5" id="details">
+          <!-- EMPTY AT LOAD -->
+        </div>
+        <input
+          type="button"
+          class="btn btn-info"
+          value="EDIT"
+          onclick="handleEdit()"
+        />
+        <input
+          type="button"
+          class="btn btn-danger"
+          value="DELETE"
+          onclick="handleDelete()"
+        />
+      </div>
     <script src="./helper.js"></script>
-    <script>window.onload = async function getProductsDetails ()  {
-      let productsDiv = document.querySelector(".container");
-      let products = await getProducts();
-      console.log(products)   
-       if (products.length > 0) {
-        products.forEach((pdt) => {
-          console.log(pdt)
-          productsDiv.innerHTML+= `
-          <div class= "card mb-3" style="width: 18rem;">
-         <img src="${pdt.imageUrl}" class="card-img-top" alt="...">
+    <script>
+          let id;
+  window.onload = async () => {
+    let urlParams = new URLSearchParams(window.location.search);
+    id = urlParams.get("id");
+    console.log("ID of PDT is", id)
+    let productData = await getSingleProduct(id);
+    console.log("Products details", productData)
+    let productsDiv = document.querySelector('#details')
+    console.log(productsDiv)
+    productsDiv.innerHTML = 
+    `<div class="card mb-3" style="width: 18rem;">
+        <img src="${productData.imageUrl}" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">${pdt.name}</h5>
-        <p class="card-text">${pdt.description}</p>
-        <p class="card-text">${pdt.brand}</p>
-        <p class="card-text">${pdt.price}</p>
-        
-       <a href="detail.html?id=${pdt._id}" class="btn btn-primary">Details</a>
+        <h5 class="card-title">${productData.name}</h5>
+        <p class="card-text">${productData.description}</p>
+        <p class="card-text">${productData.brand}</p>
+        <p class="card-text">${productData.price}</p>
     </div>
-  </div>
-          `
-        });
-      } else {
-        productsDiv.innerHTML = "<h1>No selected products</h1>";
-      }
-    };
-  </script>
+    `
+};
+    </script>
     
 
-    <!-- Optional JavaScript  let product1 = document.createElement("div");
-        product1.innerHTML = `<span>${pdt.name}: ${pdt.userId} :${pdt.price}</span>
-        <img src = "${pdt.imageUrl}"></img>`;
-        productsDiv.appendChild(product1);-->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+        
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
